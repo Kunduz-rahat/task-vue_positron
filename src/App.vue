@@ -1,9 +1,15 @@
 
 <template>
-<div>
+<div class="container">
+	<h1>Просмотренные товары</h1>
 	<div v-for="product in products" v-bind:key="product.id">
-		<h1>{{product.title}}</h1>
 		<img :src="product.image"/>
+		<h2>{{product.title}}</h2>
+		<p>{{product.desk}}</p>
+		<p>6 848 ₽ – 56 584 ₽</p>
+		<p>77.60 € – 643.86 €</p>
+		<button class="button">Подробнее</button>
+		
 	</div>
 </div>
 </template>
@@ -52,4 +58,23 @@ export default{
 </script>
 
 <style>
+.button{
+	background: #0069B4;
+border-radius: 4px;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 15px 50px;
+gap: 10px;
+font-weight: 600;
+font-size: 16px;
+line-height: 145%;
+text-align: center;
+color: #FFFFFF;
+border: none;
+}
+.container{
+	max-width: 1440px;
+}
 </style>
