@@ -1,10 +1,12 @@
 <template>
-	<div>
+	<div >
 		<h1>Просмотренные товары</h1>
-	
+	<div class="product__list">
 		<product-item v-for="product in products" 
 		:product="product" 
 		:key="product.id"/>
+	</div>
+		
 	
 	</div>
 </template>
@@ -26,5 +28,10 @@ import ProductItem from './ProductItem.vue';
 </script>
 
 <style  scoped>
-
+.product__list{
+	
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-column: 20px;
+}
 </style>

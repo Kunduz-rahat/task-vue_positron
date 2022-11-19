@@ -1,7 +1,7 @@
 <template>
-	<div class="product">
+	<div class="product__item">
 		
-		<img :src="product.image"/>
+		<img :src="product.src"  class="product__item_img"/>
 		<h2>{{product.title}}</h2>
 		<p>{{product.desk}}</p>
 		<p>6 848 ₽ – 56 584 ₽</p>
@@ -40,9 +40,14 @@ text-align: center;
 color: #FFFFFF;
 border: none;
 }
-.product{
+.product__item{
 	background: #F6F8FA;
 border-radius: 5px;
 padding: 25px;
+
+}
+.product__item_img{
+	max-width: 245px;
+	min-width: 245px;
 }
 </style>
