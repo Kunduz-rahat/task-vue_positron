@@ -7,6 +7,7 @@
 		<div class="product_price">
 		
 		<p class="product__price_r">6 848 ₽ – 56 584 ₽</p>
+		<p class="product__price_r">6 848 ₽ – 56 584 ₽</p>
 		<p class="product__price_e">77.60 € – 643.86 €</p>
 		<button class="button">Подробнее</button>
 	
