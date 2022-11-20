@@ -1,16 +1,20 @@
 
 <template>
 <div class="container">
+	<nab-bar/>
+	<cart-list :products="products"/>
 	<product-list :products="products"/>
 </div>
 </template>
 
 <script>
 import ProductList from '@/components/ProductList.vue';
+import CartList from './components/CartList.vue';
+import NabBar from './components/NabBar.vue';
 import products from './data/products';
 export default{
 	components:{
-		ProductList
+		ProductList, NabBar, CartList
 	},
 	data(){
 		return{
