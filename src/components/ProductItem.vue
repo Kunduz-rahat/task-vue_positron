@@ -5,7 +5,7 @@
 		<h2 class="product__title">{{product.title}}</h2>
 		<p class="product__subtitle">{{product.desk}}</p>
 		<div class="product_price">
-		
+		<!-- <p>{{$store.state.likes}}</p> -->
 		<p class="product__price_r">6 848 ₽ – 56 584 ₽</p>
 		<p class="product__price_r">6 848 ₽ – 56 584 ₽</p>
 		<p class="product__price_e">77.60 € – 643.86 €</p>
@@ -18,6 +18,8 @@
 </template>
 
 <script>
+
+
 	export default {
 		props:{
 			product:{
