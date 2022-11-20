@@ -30,12 +30,14 @@ import ProductItem from './ProductItem.vue';
 		components:{
 	ProductItem
 },
-		props:{
-			products:{
-				type:Array,
-				required:true
-			}
-		}
+computed: {
+            products(){
+                return this.$store.state.products;
+            }
+        },
+        created(){
+            this.$store.dispatch("fetchProducts");
+        }
 	}
 </script>
 

@@ -7,7 +7,8 @@
 		<div class="product_price">
 				<p class="product__price_r">6 848 ₽ – 56 584 ₽</p>
 		<p class="product__price_e">77.60 € – 643.86 €</p>
-		<button class="button" @click="addToCart">Подробнее</button>
+		<button class="button"  @click="addToCart(product.id)"
+               :disabled="!inCartQuantity">Добавить в корзину</button>
 	
 		</div>
 		
@@ -17,16 +18,19 @@
 
 <script>
 
-
-	export default {
-		props:	{
-			product:
-			{
-				type:Object,
-				required:true
-			}
-		}
-	}
+export default{
+        props: ["product"],
+        computed: {
+			inCartQuantity() {
+                return this.product.quantity;
+            }
+        },
+        methods: {
+            addToCart(id){
+                this.$store.dispatch("addToCart", id);
+            }
+        }
+    }
 </script>
 
 <style scoped>
