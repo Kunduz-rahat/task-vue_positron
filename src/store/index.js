@@ -1,7 +1,10 @@
+/* eslint-disable no-unused-vars */
 
 import { createStore } from "vuex";
 
-
+function updateLocalStorage(cart){
+	localStorage.setItem('cart', JSON.stringify(cart))
+}
 
 export default createStore({
 	state:{
@@ -22,6 +25,7 @@ addToCart(state, product){
 	}else{
 		state.cart.push({...product, quantity:1})
 	}
+	updateLocalStorage(state.cart)
 }
 	}
 })
