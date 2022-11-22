@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <nab-bar />
-    <CartList :products="products" />
-    <ProductList :products="products" />
+    <cart-list :products="products" />
+    <product-list :products="products" />
   </div>
 </template>
 

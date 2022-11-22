@@ -18,6 +18,11 @@ export default createStore({
                 return total + product.price * product.quantity
             }, 0)
         },
+        cartTotalQuantity: (state) => {
+            return state.cart.reduce((total, product) => {
+                return total += product.quantity
+            }, 0)
+        },
     },
     mutations: {
         addToCart: (state, productId) => {

@@ -17,7 +17,7 @@
     <div class="cart__header">
       <div class="cart__info">
         <h1 class="cart__header_title">Ваша корзина</h1>
-        <div class="cart__size">{{ cartSize }} товара</div>
+        <div class="cart__size">{{ cartTotalQuantity }} товара</div>
       </div>
       <div>
         <button class="cart__del_all">Очистить корзину</button>
@@ -39,20 +39,19 @@
             <p class="cart__vendor_code">Артикул: {{ product.vendorcode }}</p>
           </div>
           <div class="cart__btns">
-            <button
+            <button class="cart__btn"
               @click="removeFromCart(product.id)"
               :disabled="product.quantity === 1"
             >
               -
             </button>
-            <span>{{ product.quantity }}</span>
-            <button
+            <button class="cart__btn">{{ product.quantity }}</button>
+            <button class="cart__btn"
               @click="addToCart(product.id)"
               :disabled="product.quantity === product.stock"
             >
               +
             </button>
-
             <div v-if="product.quantity * product.price > product.price">
               {{ product.price.toLocaleString() }} ₽/шт.
             </div>
@@ -66,14 +65,13 @@
           <input type="checkbox" v-model="active" />
           <img src="../assets/Input.png" class="cart__setting_img" />
           <div>
-            <h6>Установка</h6>
-            <p>
+            <h6 class="cart__setting_title">Установка</h6>
+            <p class="cart__vendor_code">
               Отметьте, если Вам необходима консультация профессионала по
               монтажу выбранных товаров.
             </p>
           </div>
-          <input type="checkbox" id="checkbox" v-model="checked" />
-          <label for="checkbox">{{ checked }}</label>
+      
         </div>
       </div>
       <div class="cart__total_info" v-if="cartSize">
@@ -86,11 +84,11 @@
         </div>
         <div class="cart__info_sub">
           <p class="cart__subtitle">Количествo</p>
-          <p class="cart__total_amount">4 шт</p>
+          <p class="cart__total_amount">{{cartTotalQuantity}} шт</p>
         </div>
         <div class="cart__info_sub">
           <p class="cart__subtitle">Установка</p>
-          <p class="cart__total_amount" v-if="active">Да</p>
+          <p class="cart__total_amount" v-if="active">Нет</p>
         </div>
         <hr />
         <div class="cart__info_sub">
@@ -115,7 +113,7 @@ export default {
   },
   computed: {
     ...mapState(["cart"]),
-    ...mapGetters(["cartSize", "cartTotalAmount"])
+    ...mapGetters(["cartSize", "cartTotalAmount", 'cartTotalQuantity'])
   },
   methods: {
     addToCart(id) {
@@ -208,8 +206,8 @@ export default {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 150%;
   color: #797b86;
+  line-height: 0%;
 }
 .cart__del_item {
   width: 12px;
@@ -323,7 +321,21 @@ export default {
   align-items: center;
   background: #f6f8fa;
   border-radius: 5px;
-
   padding: 0 25px;
 }
-</style>
+.cart__btn{
+  width: 34px;
+  height: 34px;
+  margin-left: 5px;
+  border: none;
+}
+.cart__setting_title{
+  font-family: 'Lato';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 145%;
+color: #1F2432;
+line-height: 0%;
+}
+  </style>
