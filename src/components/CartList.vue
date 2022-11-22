@@ -62,6 +62,19 @@
             ⛌
           </button>
         </div>
+        <div class="cart__setting" v-if="cartSize">
+          <input type="checkbox" v-model="active" />
+          <img src="../assets/Input.png" class="cart__setting_img" />
+          <div>
+            <h6>Установка</h6>
+            <p>
+              Отметьте, если Вам необходима консультация профессионала по
+              монтажу выбранных товаров.
+            </p>
+          </div>
+          <input type="checkbox" id="checkbox" v-model="checked" />
+          <label for="checkbox">{{ checked }}</label>
+        </div>
       </div>
       <div class="cart__total_info" v-if="cartSize">
         <h3 class="cart__total_title">Итого</h3>
@@ -77,7 +90,7 @@
         </div>
         <div class="cart__info_sub">
           <p class="cart__subtitle">Установка</p>
-          <p class="cart__total_amount">Hет</p>
+          <p class="cart__total_amount" v-if="active">Да</p>
         </div>
         <hr />
         <div class="cart__info_sub">
@@ -96,7 +109,9 @@
 import { mapState, mapGetters } from "vuex";
 export default {
   data() {
-    return {};
+    return {
+      active: []
+    };
   },
   computed: {
     ...mapState(["cart"]),
@@ -299,5 +314,16 @@ export default {
   font-size: 14px;
   line-height: 150%;
   color: #797b86;
+}
+.cart__setting_img {
+  margin: 0 20px;
+}
+.cart__setting {
+  display: flex;
+  align-items: center;
+  background: #f6f8fa;
+  border-radius: 5px;
+
+  padding: 0 25px;
 }
 </style>

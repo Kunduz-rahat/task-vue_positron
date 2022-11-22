@@ -2,9 +2,7 @@
 
 import { createStore } from 'vuex'
 import myApi from '@/myApi'
-function updateLocalStorage(cart) {
-    localStorage.setItem('cart', JSON.stringify(cart))
-}
+
 
 export default createStore({
     state: {
