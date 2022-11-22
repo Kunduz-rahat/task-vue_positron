@@ -270,6 +270,7 @@ export default {
 .cart__info_sub {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .cart__btn_order {
   background: #0069b4;
