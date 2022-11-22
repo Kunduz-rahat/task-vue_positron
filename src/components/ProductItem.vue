@@ -33,11 +33,7 @@ export default {
 .button {
     background: #0069b4;
     border-radius: 4px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 15px 50px;
+    padding: 15px ;
     gap: 10px;
     font-weight: 600;
     font-size: 16px;
@@ -46,6 +42,7 @@ export default {
     color: #ffffff;
     border: none;
     width: 100%;
+    font-family: 'Lato',sans-serif;
 }
 .product__item {
     background: #f6f8fa;

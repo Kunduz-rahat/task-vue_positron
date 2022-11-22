@@ -14,12 +14,12 @@
       Ваша корзина пуста! Пожалуйста заполните ее.
     </div>
     <div class="cart__list">
-      <div >
+      <div>
         <div class="cart_item" v-for="product in cart" :key="product.id">
           <div>
             <img :src="product.src" class="cart__img" />
           </div>
-          <div>
+          <div width="265px">
             <h6 class="cart__title">Вытяжное устройство {{ product.title }}</h6>
             <p class="cart__desc">{{ product.description }}</p>
             <p class="cart__vendor_code">Артикул: {{ product.vendorcode }}</p>
@@ -38,25 +38,41 @@
             >
               +
             </button>
-            <button class="cart__del_item" @click="deleteFromCart(product.id)">
-          ⛌
-        </button>
+
             <div v-if="product.quantity * product.price > product.price">
               {{ product.price.toLocaleString() }} ₽/шт.
             </div>
           </div>
           <div>{{ product.quantity * product.price }} ₽</div>
+          <button class="cart__del_item" @click="deleteFromCart(product.id)">
+            ⛌
+          </button>
         </div>
-      
       </div>
       <div class="cart__total_info" v-if="cartSize">
-        <h>Итого</h>
-        <div>Сумма заказа {{ cartTotalAmount.toLocaleString() }} ₽</div>
-        <div>Количествo шт</div>
-        <div>Установка нет</div>
-        <div>Стоимость товаров</div>
-        <button>Оформить заказ</button>
-        <button>Купить в 1 клик</button>
+        <h3 class="cart__total_title">Итого</h3>
+        <div class="cart__info_sub">
+          <p class="cart__subtitle">Сумма заказа</p>
+          <p class="cart__total_amount">
+            {{ cartTotalAmount.toLocaleString() }} ₽
+          </p>
+        </div>
+        <div class="cart__info_sub">
+          <p class="cart__subtitle">Количествo</p>
+          <p class="cart__total_amount">4 шт</p>
+        </div>
+        <div class="cart__info_sub">
+          <p class="cart__subtitle">Установка</p>
+          <p class="cart__total_amount">Hет</p>
+        </div>
+        <hr />
+        <div class="cart__info_sub">
+          <h4 class="cart__">Стоимость товаров</h4>
+          <p>{{ cartTotalAmount.toLocaleString() }} ₽</p>
+        </div>
+
+        <button class="cart__btn_order">Оформить заказ</button>
+        <button class="cart__btn_buy">Купить в 1 клик</button>
       </div>
     </div>
   </div>
@@ -104,6 +120,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 800px;
 }
 .cart__info {
   display: flex;
@@ -172,6 +189,7 @@ export default {
   background-color: white;
   position: absolute;
   right: 0;
+  top: 0;
 }
 .cart__total_info {
   background: #f6f8fa;
@@ -179,6 +197,7 @@ export default {
   margin-left: 55px;
   height: 458px;
   width: 425px;
+  padding: 30px 35px;
 }
 .cart_item {
   display: flex;
@@ -186,5 +205,64 @@ export default {
   justify-content: space-between;
   position: relative;
   width: 800px;
+}
+.cart__total_title {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 120.52%;
+  color: #1f2432;
+}
+.cart__subtitle {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+
+  color: #1f2432;
+}
+.cart__total_amount {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #1f2432;
+}
+.cart__info_sub {
+  display: flex;
+  justify-content: space-between;
+}
+.cart__btn_order {
+  background: #0069b4;
+  border-radius: 4px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 145%;
+  color: #ffffff;
+  border: none;
+  display: inline;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 13px 0;
+
+}
+.cart__btn_buy {
+  background:white;
+  border-radius: 4px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 145%;
+  color: #0069B4;
+
+  border:  #0069B4;
+  display: inline;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 13px 0;
 }
 </style>
