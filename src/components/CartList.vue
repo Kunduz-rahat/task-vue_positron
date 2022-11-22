@@ -17,13 +17,12 @@
     <div class="cart__header">
       <div class="cart__info">
         <h1 class="cart__header_title">Ваша корзина</h1>
-        <div class="cart__size">{{ cartTotalQuantity }} товара</div>
+        <p class="cart__size">{{ cartTotalQuantity }} товара</p>
       </div>
       <div>
         <button class="cart__del_all">Очистить корзину</button>
       </div>
     </div>
-
     <div v-if="!cartSize" role="alert" class="cart__empty">
       Ваша корзина пуста! Пожалуйста заполните ее.
     </div>
@@ -34,29 +33,38 @@
             <img :src="product.src" class="cart__img" />
           </div>
           <div width="265px">
-            <h6 class="cart__title">Вытяжное устройство {{ product.title }}</h6>
+            <p class="cart__title">Вытяжное устройство {{ product.title }}</p>
             <p class="cart__desc">{{ product.description }}</p>
             <p class="cart__vendor_code">Артикул: {{ product.vendorcode }}</p>
           </div>
           <div class="cart__btns">
-            <button class="cart__btn"
+            <button
+              class="cart__btn"
               @click="removeFromCart(product.id)"
               :disabled="product.quantity === 1"
             >
               -
             </button>
             <button class="cart__btn">{{ product.quantity }}</button>
-            <button class="cart__btn"
+            <button
+              class="cart__btn"
               @click="addToCart(product.id)"
               :disabled="product.quantity === product.stock"
             >
               +
             </button>
-            <div v-if="product.quantity * product.price > product.price">
+            <div
+              class="cart__price"
+              v-if="product.quantity * product.price > product.price"
+            >
               {{ product.price.toLocaleString() }} ₽/шт.
             </div>
           </div>
-          <div>{{ product.quantity * product.price }} ₽</div>
+
+          <div class="cart_total_price">
+            {{ cartTotalAmount.toLocaleString() }} ₽
+          </div>
+
           <button class="cart__del_item" @click="deleteFromCart(product.id)">
             ⛌
           </button>
@@ -71,7 +79,6 @@
               монтажу выбранных товаров.
             </p>
           </div>
-      
         </div>
       </div>
       <div class="cart__total_info" v-if="cartSize">
@@ -84,7 +91,7 @@
         </div>
         <div class="cart__info_sub">
           <p class="cart__subtitle">Количествo</p>
-          <p class="cart__total_amount">{{cartTotalQuantity}} шт</p>
+          <p class="cart__total_amount">{{ cartTotalQuantity }} шт</p>
         </div>
         <div class="cart__info_sub">
           <p class="cart__subtitle">Установка</p>
@@ -92,8 +99,10 @@
         </div>
         <hr />
         <div class="cart__info_sub">
-          <h4 class="cart__">Стоимость товаров</h4>
-          <p>{{ cartTotalAmount.toLocaleString() }} ₽</p>
+          <h4 class="cart__info_amount_title">Стоимость товаров</h4>
+          <p class="cart__info_total_amount">
+            {{ cartTotalAmount.toLocaleString() }} ₽
+          </p>
         </div>
 
         <button class="cart__btn_order">Оформить заказ</button>
@@ -113,7 +122,7 @@ export default {
   },
   computed: {
     ...mapState(["cart"]),
-    ...mapGetters(["cartSize", "cartTotalAmount", 'cartTotalQuantity'])
+    ...mapGetters(["cartSize", "cartTotalAmount", "cartTotalQuantity"])
   },
   methods: {
     addToCart(id) {
@@ -152,14 +161,16 @@ export default {
 .cart__info {
   display: flex;
   align-items: center;
+  line-height: 0%;
 }
 .cart__size {
   font-family: "Lato", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  line-height: 145%;
+  line-height: 0%;
   color: #797b86;
+  margin-left: 22px;
 }
 .cart__del_all {
   font-family: "Lato", sans-serif;
@@ -190,7 +201,7 @@ export default {
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
-  line-height: 145%;
+  line-height: 80%;
   color: #1f2432;
 }
 .cart__desc {
@@ -198,7 +209,7 @@ export default {
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
-  line-height: 150%;
+  line-height: 80%;
   color: #2c3242;
 }
 .cart__vendor_code {
@@ -207,7 +218,7 @@ export default {
   font-weight: 400;
   font-size: 14px;
   color: #797b86;
-  line-height: 0%;
+  line-height: 80%;
 }
 .cart__del_item {
   width: 12px;
@@ -323,19 +334,62 @@ export default {
   border-radius: 5px;
   padding: 0 25px;
 }
-.cart__btn{
+.cart__btn {
   width: 34px;
   height: 34px;
   margin-left: 5px;
   border: none;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  color: #1f2432;
 }
-.cart__setting_title{
-  font-family: 'Lato';
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 145%;
-color: #1F2432;
-line-height: 0%;
+.cart__setting_title {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 145%;
+  color: #1f2432;
+  line-height: 0%;
 }
-  </style>
+.cart__price {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 145%;
+  text-align: center;
+  color: #1f2432;
+  margin-top: 13px;
+}
+.cart_total_price {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 145%;
+  text-align: right;
+  color: #1f2432;
+}
+.cart__info_total_amount {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 130%;
+  text-align: right;
+  letter-spacing: 0.005em;
+  color: #1f2432;
+}
+.cart__info_amount_title {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 145%;
+  color: #1f2432;
+}
+</style>
