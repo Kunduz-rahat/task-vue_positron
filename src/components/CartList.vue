@@ -15,21 +15,19 @@
     </div>
 
     <div v-for="product in cart" :key="product.id" class="cart__list">
-        
       <div class="cart_item">
         <div>
           <img :src="product.src" class="cart__img" />
         </div>
         <div>
-          <div class="cart__title">Вытяжное устройство {{ product.title }}</div>
-          <div class="cart__desc">{{ product.description }}</div>
-          <div class="cart__vendor_code">Артикул: {{ product.vendorcode }}</div>
+          <h6 class="cart__title">Вытяжное устройство {{ product.title }}</h6>
+          <p class="cart__desc">{{ product.description }}</p>
+          <p class="cart__vendor_code">Артикул: {{ product.vendorcode }}</p>
         </div>
         <div class="cart__btns">
           <button
             @click="removeFromCart(product.id)"
             :disabled="product.quantity === 1"
-            class="btn btn-outline-danger btn-small"
           >
             -
           </button>
@@ -37,7 +35,6 @@
           <button
             @click="addToCart(product.id)"
             :disabled="product.quantity === product.stock"
-            class="btn btn-outline-success btn-small"
           >
             +
           </button>
@@ -46,21 +43,19 @@
           </div>
         </div>
         <div>{{ product.quantity * product.price }} ₽</div>
-        
       </div>
       <button class="cart__del_item" @click="deleteFromCart(product.id)">
-          x
-        </button>
-   
-      </div>
-      <div class="cart__total_info">
-        <h>Итого</h>
-        <div>Сумма заказа {{ cartTotalAmount.toLocaleString() }} ₽</div>
-        <div>Количествo шт</div>
-        <div>Установка нет</div>
-        <div>Стоимость товаров</div>
-        <button>Оформить заказ</button>
-        <button>Купить в 1 клик</button>
+        x
+      </button>
+    </div>
+    <div class="cart__total_info" v-if="cartSize">
+      <h>Итого</h>
+      <div>Сумма заказа {{ cartTotalAmount.toLocaleString() }} ₽</div>
+      <div>Количествo шт</div>
+      <div>Установка нет</div>
+      <div>Стоимость товаров</div>
+      <button>Оформить заказ</button>
+      <button>Купить в 1 клик</button>
     </div>
   </div>
 </template>
@@ -176,18 +171,16 @@ export default {
   background-color: white;
   position: absolute;
   right: 0;
- 
 }
 .cart__total_info {
   background: #f6f8fa;
   border-radius: 5px;
 }
-.cart_item{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    width: 800px;
-   
+.cart_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 800px;
 }
 </style>

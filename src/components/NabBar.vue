@@ -6,15 +6,21 @@
       </div>
       <div class="header__info_cart">
         <p class="header__title">Ваша корзина</p>
-        <p class="header__amount">3 товара</p>
-        <p class="header__sum">50 576 ₽</p>
+        <p class="header__amount">{{ cartSize }} товара</p>
+        <p class="header__sum"> {{ cartTotalAmount.toLocaleString() }} ₽</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapState, mapGetters } from "vuex";
+export default {
+  computed: {
+    ...mapState(["cart"]),
+    ...mapGetters(["cartSize", "cartTotalAmount"])
+  },
+};
 </script>
 
 <style scoped>
