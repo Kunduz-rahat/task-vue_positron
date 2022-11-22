@@ -45,7 +45,7 @@ export default {
     grid-column-gap: 20px;
 }
 .subtitle {
-    font-family: 'Lato';
+    font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 30px;
@@ -73,7 +73,7 @@ export default {
     color: #212121;
 }
 .page__number {
-    font-family: 'Lato';
+    font-family: 'Lato', sans-serif;
     font-style: normal;
     font-size: 16px;
     line-height: 145%;

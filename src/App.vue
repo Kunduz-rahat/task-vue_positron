@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <nab-bar />
     <CartList :products="products" />
     <ProductList :products="products" />
   </div>
@@ -10,17 +11,19 @@ import ProductList from "@/components/ProductList.vue";
 import CartList from "./components/CartList.vue";
 
 import products from "./data/products";
+import NabBar from "./components/NabBar.vue";
 export default {
   components: {
     ProductList,
     CartList,
+    NabBar
   },
   data() {
     return {
-      products: products,
+      products: products
     };
   },
-  methods: {},
+  methods: {}
 };
 </script>
 

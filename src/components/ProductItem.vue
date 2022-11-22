@@ -57,7 +57,7 @@ export default {
     min-width: 245px;
 }
 .product__title {
-    font-family: 'Lato';
+    font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 22px;
@@ -65,7 +65,7 @@ export default {
     color: #1f2432;
 }
 .product__subtitle {
-    font-family: 'Lato';
+    font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -77,7 +77,7 @@ export default {
     margin-top: 40px;
 }
 .product__price_r {
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 22px;
@@ -87,7 +87,7 @@ export default {
 }
 
 .product__price_e {
-    font-family: 'Lato';
+    font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
