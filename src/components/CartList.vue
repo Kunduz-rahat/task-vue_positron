@@ -13,49 +13,51 @@
     <div v-if="!cartSize" role="alert" class="cart__empty">
       Ваша корзина пуста! Пожалуйста заполните ее.
     </div>
-
-    <div v-for="product in cart" :key="product.id" class="cart__list">
-      <div class="cart_item">
-        <div>
-          <img :src="product.src" class="cart__img" />
-        </div>
-        <div>
-          <h6 class="cart__title">Вытяжное устройство {{ product.title }}</h6>
-          <p class="cart__desc">{{ product.description }}</p>
-          <p class="cart__vendor_code">Артикул: {{ product.vendorcode }}</p>
-        </div>
-        <div class="cart__btns">
-          <button
-            @click="removeFromCart(product.id)"
-            :disabled="product.quantity === 1"
-          >
-            -
-          </button>
-          <span>{{ product.quantity }}</span>
-          <button
-            @click="addToCart(product.id)"
-            :disabled="product.quantity === product.stock"
-          >
-            +
-          </button>
-          <div v-if="product.quantity * product.price > product.price">
-            {{ product.price.toLocaleString() }} ₽/шт.
+    <div class="cart__list">
+      <div >
+        <div class="cart_item" v-for="product in cart" :key="product.id">
+          <div>
+            <img :src="product.src" class="cart__img" />
           </div>
+          <div>
+            <h6 class="cart__title">Вытяжное устройство {{ product.title }}</h6>
+            <p class="cart__desc">{{ product.description }}</p>
+            <p class="cart__vendor_code">Артикул: {{ product.vendorcode }}</p>
+          </div>
+          <div class="cart__btns">
+            <button
+              @click="removeFromCart(product.id)"
+              :disabled="product.quantity === 1"
+            >
+              -
+            </button>
+            <span>{{ product.quantity }}</span>
+            <button
+              @click="addToCart(product.id)"
+              :disabled="product.quantity === product.stock"
+            >
+              +
+            </button>
+            <button class="cart__del_item" @click="deleteFromCart(product.id)">
+          ⛌
+        </button>
+            <div v-if="product.quantity * product.price > product.price">
+              {{ product.price.toLocaleString() }} ₽/шт.
+            </div>
+          </div>
+          <div>{{ product.quantity * product.price }} ₽</div>
         </div>
-        <div>{{ product.quantity * product.price }} ₽</div>
+      
       </div>
-      <button class="cart__del_item" @click="deleteFromCart(product.id)">
-        x
-      </button>
-    </div>
-    <div class="cart__total_info" v-if="cartSize">
-      <h>Итого</h>
-      <div>Сумма заказа {{ cartTotalAmount.toLocaleString() }} ₽</div>
-      <div>Количествo шт</div>
-      <div>Установка нет</div>
-      <div>Стоимость товаров</div>
-      <button>Оформить заказ</button>
-      <button>Купить в 1 клик</button>
+      <div class="cart__total_info" v-if="cartSize">
+        <h>Итого</h>
+        <div>Сумма заказа {{ cartTotalAmount.toLocaleString() }} ₽</div>
+        <div>Количествo шт</div>
+        <div>Установка нет</div>
+        <div>Стоимость товаров</div>
+        <button>Оформить заказ</button>
+        <button>Купить в 1 клик</button>
+      </div>
     </div>
   </div>
 </template>
@@ -86,9 +88,8 @@ export default {
 
 <style scoped>
 .cart__list {
-  display: grid;
-  grid-template-columns: (2fr, 1fr);
-  grid-column-gap: 55px;
+  display: flex;
+  align-items: center;
 }
 .cart__header_title {
   font-family: "Lato", sans-serif;
@@ -175,6 +176,9 @@ export default {
 .cart__total_info {
   background: #f6f8fa;
   border-radius: 5px;
+  margin-left: 55px;
+  height: 458px;
+  width: 425px;
 }
 .cart_item {
   display: flex;

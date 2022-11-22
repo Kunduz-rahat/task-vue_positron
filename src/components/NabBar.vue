@@ -46,7 +46,7 @@ export default {
   font-weight: 400;
   font-size: 12px;
   color: #797b86;
-  line-height: 10%;
+  line-height: 80%;
 }
 .header__sum {
   font-family: "Lato", sans-serif;
