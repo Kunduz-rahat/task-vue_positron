@@ -1,5 +1,19 @@
 <template>
   <div>
+    <div class="cart__nav">
+      <p class="cart__nav_title">Главная</p>
+      <div>
+        <img
+          src="../assets/Vector.png"
+          height="8"
+          width="5"
+          class="cart__nav_img"
+        />
+      </div>
+
+      <p class="cart__nav_title_active">Корзина</p>
+    </div>
+
     <div class="cart__header">
       <div class="cart__info">
         <h1 class="cart__header_title">Ваша корзина</h1>
@@ -247,22 +261,43 @@ export default {
   width: 100%;
   margin-bottom: 12px;
   padding: 13px 0;
-
 }
 .cart__btn_buy {
-  background:white;
+  background: white;
   border-radius: 4px;
   font-family: "Lato";
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
   line-height: 145%;
-  color: #0069B4;
-
-  border:  #0069B4;
+  color: #0069b4;
+  border: #0069b4;
   display: inline;
   width: 100%;
   margin-bottom: 12px;
   padding: 13px 0;
+}
+.cart__nav {
+  display: flex;
+  align-items: center;
+}
+.cart__nav_img {
+  margin: 10px;
+}
+.cart__nav_title {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #33374e;
+}
+.cart__nav_title_active {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #797b86;
 }
 </style>
